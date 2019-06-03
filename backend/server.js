@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import Registration from './models/Register';
+import mongoose, { mongo } from 'mongoose';
+import User from './models/User';
 
 const app = express();
 const router = express.Router();
@@ -20,11 +20,11 @@ connection.once('open', () => {
 
 app.use('/', router);
 
-//Begin routes for user registration:
+//Begin routes for user User:
 
 // Get all users:
 router.route('/users').get((req, res) => {
-  Registration.find((err, users) => {
+  User.find((err, users) => {
     if (err)
       console.log(err);
     else
@@ -34,7 +34,7 @@ router.route('/users').get((req, res) => {
 
 // Get user by ID:
 router.route('/users/:id').get((req, res) => {
-  Registration.findById(req.params.id,(err, users) => {
+  User.findById(req.params.id,(err, users) => {
     if (err)
       console.log(err);
     else
@@ -44,7 +44,7 @@ router.route('/users/:id').get((req, res) => {
 
 // Add new user
 router.route('/users/add').post((req, res) => {
-  let user = new Registration(req.body);
+  let user = new User(req.body);
   user.save()
     .then(user => {
       res.status(200).json({'user': 'Added successfully!'});
@@ -56,7 +56,7 @@ router.route('/users/add').post((req, res) => {
 
 // Update a user:
 router.route('/users/updates/:id').post((req, res) => {
-  Registration.findById(req.params.id, (err, user) => {
+  User.findById(req.params.id, (err, user) => {
     if (!user)
       return next (new Error ('Could not load document'));
     else {
@@ -78,7 +78,7 @@ router.route('/users/updates/:id').post((req, res) => {
 
 // Delete a user:
 router.route('/users/delete/:id').get((req, res) => {
-  Registration.findByIdAndRemove({_id: req.params.id}, (err, user) => {
+  User.findByIdAndRemove({_id: req.params.id}, (err, user) => {
     if(err)
       res.json(err);
     else
