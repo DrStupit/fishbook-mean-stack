@@ -20,7 +20,7 @@ connection.once('open', () => {
 
 app.use('/', router);
 
-//Begin routes for user User:
+//Begin routes for user:
 
 // Get all users:
 router.route('/users').get((req, res) => {

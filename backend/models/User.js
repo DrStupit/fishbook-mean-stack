@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-let Registration = new Schema ({
+let User = new Schema ({
   name: { type: String },
   surname: { type: String },
   email: { type: String },
@@ -11,4 +11,4 @@ let Registration = new Schema ({
   cellNo: { type: String }
 });
 
-export default mongoose.model('Registration', Registration)
+export default mongoose.model('User', User)
