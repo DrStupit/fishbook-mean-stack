@@ -10,7 +10,7 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:4000/fishbook');
+mongoose.connect('mongodb://localhost:27017/fishbook_dev');
 
 const connection = mongoose.connection;
 
@@ -39,6 +39,50 @@ router.route('/users/:id').get((req, res) => {
       console.log(err);
     else
       res.json(users);
+  });
+});
+
+// Add new user
+router.route('/users/add').post((req, res) => {
+  let user = new Registration(req.body);
+  user.save()
+    .then(user => {
+      res.status(200).json({'user': 'Added successfully!'});
+    })
+    .catch(err => {
+      res.status(400).send('Failed to add new user.')
+    })
+});
+
+// Update a user:
+router.route('/users/updates/:id').post((req, res) => {
+  Registration.findById(req.params.id, (err, user) => {
+    if (!user)
+      return next (new Error ('Could not load document'));
+    else {
+      user.name = req.body.name;
+      user.surname = req.body.surname;
+      user.email = req.body.email;
+      user.password = req.body.password;
+      user.isActivated = req.body.isActivated;
+      user.cellNo = req.body.cellNo;
+
+      user.save().then( user => {
+        res.json('Update done')
+      }).catch(err => {
+        res.status(400).send('Update failed');
+      });
+    }
+  });
+});
+
+// Delete a user:
+router.route('/users/delete/:id').get((req, res) => {
+  Registration.findByIdAndRemove({_id: req.params.id}, (err, user) => {
+    if(err)
+      res.json(err);
+    else
+      res.json('Removed user successfully')
   });
 });
 
