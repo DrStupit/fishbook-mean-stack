@@ -47,7 +47,7 @@ router.route('/users/add').post((req, res) => {
   let user = new User(req.body);
   user.save()
     .then(user => {
-      res.status(200).json({'user': 'Added successfully!'});
+      res.status(200).json({'users': 'Added successfully!'});
     })
     .catch(err => {
       res.status(400).send('Failed to add new user.')
