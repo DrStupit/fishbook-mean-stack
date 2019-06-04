@@ -1,0 +1,22 @@
+.mat-form-field {
+    width: 100%;
+    margin: auto;
+}
+
+.mat-card {
+    max-width: 400px;
+    margin: auto;
+    //float: right;
+}
+
+.mat-card-avatar {
+    background-image: url('/assets/imgs/fb-logo.png');
+    background-size: cover;
+    border-radius: 0px;
+}
+
+.mat-card-actions {
+    display: flex;
+    text-align: center;
+    width: 100%;
+}

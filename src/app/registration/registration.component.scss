@@ -1,23 +1,24 @@
 .mat-form-field {
-  width: 100%;
-  margin: auto;
+    width: 100%;
+    margin: auto;
 }
 
 .mat-card {
-  max-width: 400px;
-  margin: auto;
-  //float: right;
+    max-width: 400px;
+    margin: auto;
+    //float: right;
 }
+
 .mat-card-avatar {
-  background-image: url('/assets/imgs/fb-logo.png');
-  background-size: cover;
-  border-radius: 0px;
+    background-image: url('/assets/imgs/fb-logo.png');
+    background-size: cover;
+    border-radius: 0px;
 }
 
 .mat-card-actions {
-  display: flex;
+    display: flex;
 }
 
-.mat-card-actions .flex-spacer {
-  width: 100%
+.mat-card-actions {
+    width: 100%
 }

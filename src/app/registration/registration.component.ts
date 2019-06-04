@@ -28,6 +28,9 @@ export class RegistrationComponent implements OnInit {
        this.router.navigate(['/login']);
      });
    }
+   loginRedirect() {
+     this.router.navigate(['/login']);
+   }
 
   ngOnInit() {
   }
