@@ -43,7 +43,7 @@
 
       <mat-card-actions>
           <button type="submit" class="submitBtn"
-          (click)="addUser(name.value, surname.value, email.value, password.value, isActivated.value, cellNo.value)"
+          (click)="addUser(name.value, surname.value, email.value, password.value, true, cellNo.value)"
           [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Sign Up</button>
           <div class="flex-spacer"></div>
       </mat-card-actions>
