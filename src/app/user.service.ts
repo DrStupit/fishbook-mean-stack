@@ -1,13 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { User } from './user.model';
+import { BehaviorSubject, Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   uri = 'http://localhost:4000';
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
+
+  register(user: User) {
+    return this.http.post(`${this.uri}/api/users/register`, user);
+  }
+
+
+
 
   getUsers() {
     return this.http.get(`${this.uri}/users`);
@@ -27,7 +44,7 @@ export class UserService {
       cellNo
     };
     JSON.stringify(user);
-    return this.http.post(`${this.uri}/users/add`, user);
+    return this.http.post(`${this.uri}/api/users/register`, user);
   }
 
   updateUser(id, name, surname, email, password, cellNo) {

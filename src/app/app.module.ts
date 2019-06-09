@@ -15,14 +15,13 @@ import { MatToolbarModule,
   MatCardModule,
   MatTableModule,
   MatDividerModule,
-  MatSnackBarModule } from '@angular/material';
+  MatSnackBarModule} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ActivityComponent } from './activity/activity.component';
 import { LoginComponent } from './login/login.component';
-import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -32,7 +31,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegistrationComponent,
     ActivityComponent,
     LoginComponent,
-    UsersComponent
   ],
   imports: [
     BrowserModule,

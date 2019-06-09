@@ -6,4 +6,5 @@ export interface User {
   password: string;
   isActivated: boolean;
   cellNo: string;
+  token: string;
 }

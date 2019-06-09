@@ -26,7 +26,7 @@
 
             <mat-card-actions>
                 <div class="flex-spacer"></div>
-                <button type="submit" class="submitBtn" (click)="loginUser()" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Login</button>
+                <button type="submit" class="submitBtn" (click)="onSubmit()" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Login</button>
             </mat-card-actions>
 
         </form>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from '../authentication.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +14,19 @@ export class RegistrationComponent implements OnInit {
 
   createForm: FormGroup;
 
-  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService) {
+       // redirect to home if already logged in
+       if (this.authenticationService.currentUserValue) {
+        this.router.navigate(['/']);
+    }
+  }
+
+
+  ngOnInit() {
     this.createForm = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
@@ -21,18 +35,28 @@ export class RegistrationComponent implements OnInit {
       isActivated: true,
       cellNo: ''
     });
-   }
+  }
 
-   addUser(name, surname, email, password, isActivated, cellNo) {
-     this.userService.addUser(name, surname, email, password, isActivated, cellNo).subscribe(() => {
-       this.router.navigate(['/login']);
-     });
-   }
-   loginRedirect() {
-     this.router.navigate(['/login']);
-   }
+  get f() { return this.createForm.controls; }
 
-  ngOnInit() {
+  loginRedirect() {
+    this.router.navigate(['/login']);
+  }
+  onSubmit() {
+    if(this.createForm.invalid) {
+      return;
+    }
+
+    this.userService.register(this.createForm.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate(['/login']);
+        },
+        error => {
+          this.router.navigate(['/']);
+        }
+      )
   }
 
 }
