@@ -1,0 +1,28 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+          <mat-icon color="secondary" aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span><img src="/assets/imgs/Fishbook-logo-280-x-80px-opt-1.png" height=45px;></span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #drawer mode="side" opened role="navigation">
+      <mat-nav-list>
+          <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/profile']"><mat-icon>account_circle</mat-icon>Profile </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLinkActive="list-item-active"><mat-icon>photo_library</mat-icon>My Releases </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLinkActive="list-item-active"><mat-icon>ballot</mat-icon>Fishbook Blogs </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLinkActive="list-item-active"><mat-icon>play_circle_outline</mat-icon>Fishtube Featured </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)="logout()" routerLinkActive="list-item-active"><mat-icon>exit_to_app</mat-icon>Logout </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+

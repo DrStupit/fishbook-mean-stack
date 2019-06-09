@@ -15,7 +15,7 @@ import { MatToolbarModule,
   MatCardModule,
   MatTableModule,
   MatDividerModule,
-  MatSnackBarModule} from '@angular/material';
+  MatSnackBarModule, MatSidenavModule, MatListModule} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,9 @@ import { ActivityComponent } from './activity/activity.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UploadComponent } from './upload/upload.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegistrationComponent,
     ActivityComponent,
     LoginComponent,
+    UserProfileComponent,
+    UploadComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

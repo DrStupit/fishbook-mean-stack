@@ -1,7 +1,2 @@
-<mat-toolbar>
-  <span><img src="/assets/imgs/Fishbook-logo-280-x-80px-opt-1.png" height=40px;></span>
-  <button *ngIf="currentUser" type="submit" class="submitBtn" (click)="logout()"mat-raised-button color="primary">Logout</button>
-</mat-toolbar>
-<div>
-  <router-outlet></router-outlet>
-</div>
+ <app-nav></app-nav>
+ <router-outlet></router-outlet>
