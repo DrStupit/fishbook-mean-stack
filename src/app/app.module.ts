@@ -15,7 +15,7 @@ import { MatToolbarModule,
   MatCardModule,
   MatTableModule,
   MatDividerModule,
-  MatSnackBarModule, MatSidenavModule, MatListModule} from '@angular/material';
+  MatSnackBarModule, MatSidenavModule, MatListModule, MatStepperModule} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -57,7 +57,8 @@ import { NavComponent } from './nav/nav.component';
     MatDividerModule,
     MatSnackBarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatStepperModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
